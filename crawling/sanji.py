@@ -18,3 +18,4 @@ data = soup.find('table')
 table = parser.make2d(data)
 df = pd.DataFrame(data=table[1:],columns=table[0])
 df.to_csv('sanji.csv')
+
