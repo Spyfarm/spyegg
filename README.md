@@ -54,14 +54,24 @@ sanji <- sanji[-1,]
 colnames(sanji) <- as.character(sanji[1,])
 sanji_delete <- c(1,7)
 sanji <- sanji[-1,]
-sanji <- sanji[,-sanji_delet ㅅe]
+sanji <- sanji[,-sanji_delete]
 
 sanji <- data.frame(lapply(sanji, function(x) gsub("^(.*?)[[:space:]].*$", "\\1", x)))
 domae <- data.frame(lapply(domae, function(x) gsub("^(.*?)[[:space:]].*$", "\\1", x)))
 
-save(sanji, file = "Desktop/spyegg/Dataframe/sanji_dataframe.RData")
-save(domae, file = "Desktop/spyegg/Dataframe/domae_dataframe.RData")
+# 날짜를 날짜 형식으로 변환
+sanji$날짜 <- as.Date(sanji$날짜)
+domae$구분 <- as.Date(domae$구분)
+
+# 첫 번째 열 제외한 나머지 열의 문자열에서 쉼표 제거 후 numeric 형식으로 변환
+sanji[, -1] <- lapply(sanji[, -1], function(x) as.numeric(gsub(",", "", x)))
+domae[, -1] <- lapply(domae[, -1], function(x) as.numeric(gsub(",", "", x)))
+
+
+save(sanji, file = "Desktop/spyegg/Dataframe/sanji_dataframe.rda")
+save(domae, file = "Desktop/spyegg/Dataframe/domae_dataframe.rda")
 ```
+
 &uparrow; **전처리 소스코드**
 
 <img width="314" alt="스크린샷 2023-06-27 오전 12 08 28" src="https://github.com/seungwoolee-222/spyegg/assets/86904141/c24f7121-80e9-4e5e-ae92-adf5f884bc59">
@@ -69,6 +79,55 @@ save(domae, file = "Desktop/spyegg/Dataframe/domae_dataframe.RData")
 <img width="318" alt="스크린샷 2023-06-27 오전 12 08 05" src="https://github.com/seungwoolee-222/spyegg/assets/86904141/e6c9da7c-7de6-41a5-8d42-f1e7f758db4a">
 
 --- 
+
+#### 데이터를 토대로 시각화(R)
+
+![image](https://github.com/seungwoolee-222/spyegg/assets/86904141/bd2c39d3-bbea-4b04-8b17-8ef1ef8142b7)
+
+```R
+#install.packages("extrafont")
+#install.packages("scales")
+library(scales)
+library(extrafont)
+font_import()
+y
+library(ggplot2)
+
+load("Desktop/spyegg/Dataframe/sanji_dataframe.rda")
+load("Desktop/spyegg/Dataframe/domae_dataframe.rda")
+
+
+# 그래프 그리기
+
+ggplot(sanji, aes(x = 날짜)) +
+  geom_line(aes(y = 왕란, color = "왕란"), size= 1.5) +
+  geom_line(aes(y = 특란, color = "특란"), size= 1.5) +
+  geom_line(aes(y = 대란, color = "대란"), size= 1.5) +
+  geom_line(aes(y = 중란, color = "중란"), size= 1.5) +
+  labs(x = "날짜", y = "계란가격", color="구분") +
+  scale_color_manual(
+    values = c("왕란" = "#FFB6C1", "특란" = "#B2EC5D", "대란" = "#CDB4DB", "중란" = "#AED6F1"),
+    breaks = c("왕란", "특란", "대란", "중란"),
+    labels = c("왕란", "특란", "대란", "중란")
+  ) +
+  scale_x_date(
+    labels = date_format("%m-%d"),
+    date_breaks = "5 day"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text = element_text(family = "NanumGothic"),
+    axis.title = element_text(family = "NanumGothic"),
+    legend.title = element_text(family = "NanumGothic"),
+    legend.text = element_text(family = "NanumGothic")
+) -> p
+
+ggsave(file="Desktop/spyegg/Visualization/sanji.png", plot=p, width=10, heigh=5)
+```
+
+&uparrow; **시각화 소스코드**
+
+
 
  
 　
