@@ -1,4 +1,4 @@
-rm(list=ls())
+#rm(list=ls())
 
 #install.packages("readr")
 #install.packages("tidyverse")
@@ -17,6 +17,9 @@ sanji_delete <- c(1,7)
 sanji <- sanji[-1,]
 sanji <- sanji[,-sanji_delete]
 
-View(sanji)
-View(domae)
+sanji <- data.frame(lapply(sanji, function(x) gsub("^(.*?)[[:space:]].*$", "\\1", x)))
+domae <- data.frame(lapply(domae, function(x) gsub("^(.*?)[[:space:]].*$", "\\1", x)))
+
+save(sanji, file = "Desktop/spyegg/Dataframe/sanji_dataframe.RData")
+save(domae, file = "Desktop/spyegg/Dataframe/domae_dataframe.RData")
 
