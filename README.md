@@ -131,7 +131,7 @@ ggsave(file="Desktop/spyegg/Visualization/sanji.png", plot=p, width=10, heigh=5)
 
 <img width="1487" alt="스크린샷 2023-06-27 오후 8 06 27" src="https://github.com/seungwoolee-222/spyegg/assets/86904141/5454eafd-c891-46c5-a3a0-898475040fc3">
 
-&upload; **충격량 raw data**
+&uparrow; **충격량 raw data**
 
 ```R
 library(magrittr)
