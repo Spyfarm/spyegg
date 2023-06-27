@@ -215,10 +215,13 @@ ggsave("Desktop/spyegg/Visualization/yes_buffer.png", plot=q, width=10, heigh=5)
 
 ![no_buffer](https://github.com/seungwoolee-222/spyegg/assets/86904141/d5401bb8-6ca9-4eaa-9855-631e6fc3174a)
 
-&upload; **충격완화가 없는 조건에서의 그래프**
-![Uploading yes_buffer.png…]()
 
-&upload; **충격완화가 있는 조건에서의 그래프**
+&uparrow; **충격완화가 없는 조건에서의 그래프**
+
+![yes_buffer](https://github.com/seungwoolee-222/spyegg/assets/86904141/4d45d275-9a72-4b1f-9e3a-e65260867a2b)
+
+
+&uparrow; **충격완화가 있는 조건에서의 그래프**
 
 
 
