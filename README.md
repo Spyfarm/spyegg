@@ -132,7 +132,77 @@ ggsave(file="Desktop/spyegg/Visualization/sanji.png", plot=p, width=10, heigh=5)
 #### IMU 센서(Inertial Measurement Unit)는 관성을 측정하여 최종적으로 구하고자 하는 값은 물체가 기울어진 각도를 정확하게 측정하는 관성 측정 장치, 6축 가속도 센서)
 #### 3축 가속도 센서와 3축 자이로센서를 상호 보완하여 만든 센서로 충격량 계산과 위치 계산에 사용된다.
 
+```ino
+#include <ArduinoBLE.h>
+#include <Wire.h>
+#include "LSM6DS3.h"
 
+// Create a instance of class LSM6DS3
+LSM6DS3 myIMU(I2C_MODE, 0x6A);    // I2C device address 0x6A
+BLEService imuService("180F"); // Create BLE Service with a custom UUID
+
+BLEStringCharacteristic sensorCharacteristic("2A19", BLERead | BLENotify, 99); // Create BLE Characteristic for Sensor data
+
+void setup() {
+  Serial.begin(9600);
+  while (!Serial);
+
+  // Call .begin() to configure the IMUs
+  if (myIMU.begin() != 0) {
+    Serial.println("Device error");
+  } else {
+    Serial.println("Device OK!");
+  }
+
+  // Begin BLE
+  if (!BLE.begin()) {
+    Serial.println("starting BLE failed!");
+    while (1);
+  }
+
+  BLE.setLocalName("IMU");
+  BLE.setAdvertisedService(imuService);
+  imuService.addCharacteristic(sensorCharacteristic);
+  BLE.addService(imuService);
+  BLE.advertise();
+}
+
+void loop() {
+  BLEDevice central = BLE.central();
+  
+  if (central) {
+    Serial.print("Connected to central: ");
+    Serial.println(central.address());
+
+    while (central.connected()) {
+      String sensorData = "";
+
+      sensorData += "Accelerometer: ";
+      sensorData += "X=" + String(myIMU.readFloatAccelX(), 4);
+      sensorData += " Y=" + String(myIMU.readFloatAccelY(), 4);
+      sensorData += " Z=" + String(myIMU.readFloatAccelZ(), 4);
+
+      sensorData += "\nGyroscope: ";
+      sensorData += "X=" + String(myIMU.readFloatGyroX(), 4);
+      sensorData += " Y=" + String(myIMU.readFloatGyroY(), 4);
+      sensorData += " Z=" + String(myIMU.readFloatGyroZ(), 4);
+
+      sensorData += "\nThermometer: ";
+      sensorData += "Degrees C=" + String(myIMU.readTempC(), 4);
+
+      Serial.println(sensorData);
+
+      if (sensorData.length() > sensorCharacteristic.valueSize()) {
+        sensorData = sensorData.substring(0, sensorCharacteristic.valueSize());
+      }
+
+      sensorCharacteristic.setValue(sensorData);
+      delay(1000);
+    }
+  }
+}
+
+```
 
 <img width="1487" alt="스크린샷 2023-06-27 오후 8 06 27" src="https://github.com/seungwoolee-222/spyegg/assets/86904141/5454eafd-c891-46c5-a3a0-898475040fc3">
 
