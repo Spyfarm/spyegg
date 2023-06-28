@@ -129,6 +129,11 @@ ggsave(file="Desktop/spyegg/Visualization/sanji.png", plot=p, width=10, heigh=5)
 
 ---
 
+#### IMU 센서(Inertial Measurement Unit)는 관성을 측정하여 최종적으로 구하고자 하는 값은 물체가 기울어진 각도를 정확하게 측정하는 관성 측정 장치, 6축 가속도 센서)
+#### 3축 가속도 센서와 3축 자이로센서를 상호 보완하여 만든 센서로 충격량 계산과 위치 계산에 사용된다.
+
+
+
 <img width="1487" alt="스크린샷 2023-06-27 오후 8 06 27" src="https://github.com/seungwoolee-222/spyegg/assets/86904141/5454eafd-c891-46c5-a3a0-898475040fc3">
 
 &uparrow; **충격량 raw data**
