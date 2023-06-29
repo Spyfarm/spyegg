@@ -283,7 +283,8 @@ void loop() {
 
 &uparrow; **충격량 raw data**
 
-```R
+``` R
+
 library(magrittr)
 library(readxl)
 library(dplyr)
@@ -360,7 +361,9 @@ ggplot(yes_buffer_time_imu, aes(x= time_stack, y = imu)) +
 
 ggsave("Desktop/spyegg/Visualization/no_buffer.png", plot=p, width=10, heigh=5)
 ggsave("Desktop/spyegg/Visualization/yes_buffer.png", plot=q, width=10, heigh=5)
+
 ```
+
 **Raw Data를 전처리 및 시각화(x축 시간 , y축 충격량)**
 
 ![no_buffer](https://github.com/seungwoolee-222/spyegg/assets/86904141/d5401bb8-6ca9-4eaa-9855-631e6fc3174a)
