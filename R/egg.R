@@ -46,11 +46,20 @@ no_buffer_time_imu$time_stack <- seq(0, by = 0.1, length.out = nrow(no_buffer_ti
 # yes_buffer dataframe time_stack 생성
 yes_buffer_time_imu$time_stack <- seq(0, by = 0.1, length.out = nrow(yes_buffer_time_imu))
 
+install.packages("openxlsx")
+library("openxlsx")
+
+write.xlsx(no_buffer_time_imu, file="Desktop/spyegg/no_buffer_time_imu.xlsx")
+write.xlsx(yes_buffer_time_imu, file="Desktop/spyegg/yes_buffer_time_imu.xlsx")
+
+write.xlsx(sanji, file="Desktop/spyegg/sanji.xlsx")
+write.xlsx(domae, file="Desktop/spyegg/domae.xlsx")
+
 # no_buffer graph 생성
 ggplot(no_buffer_time_imu, aes(x= time_stack, y = imu)) +
   geom_line() +
   scale_y_continuous(limits = c(0,10), breaks = seq(0,10, by = 2.5)) +
-  labs(x= "시간", y= "충격량", title = "Nature Impact") +
+    labs(x= "시간", y= "충격량", title = "Before Feedback") +
   theme_minimal() +
   theme(
     plot.title = element_text(hjust = 0.5,size=17,face='bold',family = "NanumGothic"),
@@ -58,12 +67,12 @@ ggplot(no_buffer_time_imu, aes(x= time_stack, y = imu)) +
     axis.title = element_text(family = "NanumGothic"),
     legend.title = element_text(family = "NanumGothic"),
     legend.text = element_text(family = "NanumGothic")) -> p
-
+p
 # no_buffer graph 생성
 ggplot(yes_buffer_time_imu, aes(x= time_stack, y = imu)) +
   geom_line() +
   scale_y_continuous(limits = c(0,10), breaks = seq(0,10, by = 2.5)) +
-  labs(x= "시간", y= "충격량", title = "Impact with Buffer") +
+  labs(x= "시간", y= "충격량", title = "After Feedback") +
   theme_minimal() +
   theme(
     plot.title = element_text(hjust = 0.5,size=17,face='bold',family = "NanumGothic"),
@@ -71,6 +80,6 @@ ggplot(yes_buffer_time_imu, aes(x= time_stack, y = imu)) +
     axis.title = element_text(family = "NanumGothic"),
     legend.title = element_text(family = "NanumGothic"),
     legend.text = element_text(family = "NanumGothic")) -> q
-
+q
 ggsave("Desktop/spyegg/Visualization/no_buffer.png", plot=p, width=10, heigh=5)
 ggsave("Desktop/spyegg/Visualization/yes_buffer.png", plot=q, width=10, heigh=5)
