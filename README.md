@@ -82,7 +82,10 @@ save(domae, file = "Desktop/spyegg/Dataframe/domae_dataframe.rda")
 
 #### 데이터를 토대로 시각화(R)
 
-![image](https://github.com/seungwoolee-222/spyegg/assets/86904141/bd2c39d3-bbea-4b04-8b17-8ef1ef8142b7)
+![image](https://github.com/seungwoolee-222/spyegg/assets/86904141/0e5f82d2-a71d-4b9c-b357-53c5da767230)
+![image](https://github.com/seungwoolee-222/spyegg/assets/86904141/04171f78-f194-410c-8173-06b4852f8f73)
+
+
 
 ```R
 #install.packages("extrafont")
