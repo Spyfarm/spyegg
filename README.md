@@ -8,7 +8,7 @@
 
 ---
 
-#### 스파이에그 
+### 스파이에그 
 ![image](https://github.com/Spyegg/spyegg/assets/86904141/4983b2df-b081-4022-8879-08667aba6f81)
 
 #### 스파이에그 센서
@@ -24,59 +24,26 @@
 
 ---
 
-#### [축산물품평가원-축산유통정보](https://www.ekapepia.com/priceStat/poultry/periodMarketEggPrice.do?menuId=menu100027&boardInfoNo=)의 공공데이터를 이용해 계란의 크기별(왕란,특란,대란,중란)의 산지가격과 도매가격을 크롤링 ( Python-Beautifulsoup4 )
+- [축산물품평가원-축산유통정보](https://www.ekapepia.com/priceStat/poultry/periodMarketEggPrice.do?menuId=menu100027&boardInfoNo=)의 공공데이터를 이용해 계란의 크기별(왕란,특란,대란,중란)의 산지가격과 도매가격을 크롤링 ( Python-Beautifulsoup4 )
 
-#### 
+- **파각 임계점 설정을 위한 자체 데이터 생성**
 
-#### 크롤링한 데이터를 전처리( R )
+- **생산-유통 전주기 리스크 관리**
 
-<img width="314" alt="스크린샷 2023-06-27 오전 12 08 28" src="https://github.com/seungwoolee-222/spyegg/assets/86904141/c24f7121-80e9-4e5e-ae92-adf5f884bc59">
+- **산란계 농장 및 유통 빅데이터 수집**
 
-<img width="318" alt="스크린샷 2023-06-27 오전 12 08 05" src="https://github.com/seungwoolee-222/spyegg/assets/86904141/e6c9da7c-7de6-41a5-8d42-f1e7f758db4a">
+- **AI를 이용한 파각란 모델링**
 
---- 
+----
 
-#### 데이터를 토대로 시각화(R)
+### 웹 배포
 
-![image](https://github.com/seungwoolee-222/spyegg/assets/86904141/0e5f82d2-a71d-4b9c-b357-53c5da767230)
-![image](https://github.com/seungwoolee-222/spyegg/assets/86904141/04171f78-f194-410c-8173-06b4852f8f73)
+![image](https://github.com/Spyfarm/spyegg/assets/86904141/b2dee75f-49cb-4132-8a01-6a6d44f14dba)
 
----
-
-#### IMU 센서(Inertial Measurement Unit)는 관성을 측정하여 최종적으로 구하고자 하는 값은 물체가 기울어진 각도를 정확하게 측정하는 관성 측정 장치, 6축 가속도 센서)
-#### 3축 가속도 센서와 3축 자이로센서를 상호 보완하여 만든 센서로 충격량 계산과 위치 계산에 사용된다.
-
-<img width="1487" alt="스크린샷 2023-06-27 오후 8 06 27" src="https://github.com/seungwoolee-222/spyegg/assets/86904141/5454eafd-c891-46c5-a3a0-898475040fc3">
-
-&uparrow; **충격량 raw data**
-
-
-**Raw Data를 전처리 및 시각화(x축 시간 , y축 충격량)**
-
-![no_buffer](https://github.com/seungwoolee-222/spyegg/assets/86904141/d5401bb8-6ca9-4eaa-9855-631e6fc3174a)
-
-
-&uparrow; **충격완화가 없는 조건에서의 그래프**
-
-![yes_buffer](https://github.com/seungwoolee-222/spyegg/assets/86904141/4d45d275-9a72-4b1f-9e3a-e65260867a2b)
-
-
-&uparrow; **충격완화가 있는 조건에서의 그래프**
+![image](https://github.com/Spyfarm/spyegg/assets/86904141/9fce2a9a-4f25-4977-9acc-a2aea94df09c)
 
 
 
-![image](https://github.com/seungwoolee-222/spyegg/assets/86904141/5f07c940-bdc7-4bd9-abc8-e5815f92a9e7)
-
-&uparrow; **대란 충격량 그래프**
-
-![image](https://github.com/seungwoolee-222/spyegg/assets/86904141/268289a8-c065-421e-a98e-fc52f4c8e249)
-
-&uparrow; **특란 충격량 그래프**
-
-![image](https://github.com/seungwoolee-222/spyegg/assets/86904141/1201a8f4-a1dd-438b-b423-928eb1ebd833)
-&uparrow; **왕란 충격량 그래프**
-
-#### 무게별(왕,특,대 순서로 작아짐)로 충격량이 다른 것을 확인할 수 있다.
 
 
 
