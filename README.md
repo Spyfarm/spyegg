@@ -2,7 +2,7 @@
 
 ## 수상
 
-### [농림축산식품부 공공/빅데이터 창업경진대회 최우수상 수상](http://www.agrinet.co.kr/news/articleView.html?idxno=320467)
+### [농림축산식품부 공공/빅데이터 창업경진대회 최우수상 수상](https://www.notion.so/seungw00lee/Award-513b7252b4fc4b829016d60841c3c178)
 
 ### 제 11회 공공데이터활용창업경진대회 통합본선 진출
 
